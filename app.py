@@ -53,6 +53,6 @@ async def on_message(message):
             embed.set_footer(text=f"By the Cantina®")
             await message.channel.send(embed=embed)
         except Exception as e:
-            await message.channel.send(f'Enter a valid song id! {e}')
+            await message.channel.send('An error has occurred!',str(e).capitalize())
 
 client.run('Enter your token here!')
