@@ -1,4 +1,7 @@
-def get_image(stars:int):
+import secrets
+
+
+def get_image(stars: int) -> str:
     if stars == 2:
         image = 'https://static.wikia.nocookie.net/geometry-dash/images/7/7a/Easy.png/revision/latest/scale-to-width-down/1000?cb=20240128012431'
     elif stars == 3:
@@ -10,3 +13,8 @@ def get_image(stars:int):
     else:
         image = 'https://static.wikia.nocookie.net/geometry-dash/images/7/7f/Insane.png/revision/latest/scale-to-width-down/1000?cb=20240128012902'
     return image
+
+
+def generate_random_hex_int() -> int:
+    random_int = secrets.randbelow(0xFFFFFF + 1)
+    return random_int
