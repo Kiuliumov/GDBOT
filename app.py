@@ -57,4 +57,4 @@ async def on_message(message):
             await message.channel.send(f'An error has occurred!\n{str(e).capitalize()}')
 
 
-client.run('MTIwODM5Mjk4OTY1MTc2MzI0MA.GRc0w6.U4jK0bPFV9YQN-vxcYt1BGGyuF-S3AWRtUOi1k')
+client.run('Enter your token here!')
