@@ -41,7 +41,6 @@ async def on_message(message):
 
     elif message.content.startswith('$song'):
         try:
-            random_color = ''.join(["#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])])
             song_id = message.content.split()[1]
             song = await gd_client.get_song(song_id)
             embed = discord.Embed(color=util_functions.generate_random_hex_int()).set_author(name=song.name)
