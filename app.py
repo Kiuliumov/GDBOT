@@ -1,6 +1,5 @@
 # todo implement command handling and slash commands
 # todo implement weekly demon command
-# todo implement level searching based on id or level name
 # todo implement account searching system
 # todo implement pack searching system
 # todo process the token
