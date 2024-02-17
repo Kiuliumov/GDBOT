@@ -1,7 +1,8 @@
-# todo implement command handling and slash commands
+# todo implement command handling
 # todo implement weekly demon command
 # todo implement account searching system
 # todo implement pack searching system
+# todo implement slash commands
 # todo process the token
 import discord
 from builders import embed_builders
