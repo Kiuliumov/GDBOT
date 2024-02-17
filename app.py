@@ -52,6 +52,23 @@ async def on_message(message):
             embed.set_footer(text=f"By the Cantina®")
             await message.channel.send(embed=embed)
         except Exception as e:
-            await message.channel.send('An error has occurred!',str(e).capitalize())
+            await message.channel.send(f'An error has occurred!\n{str(e).capitalize()}')
+    elif message.content.startswith('$search'):
+        try:
+            level_name = message.content.split()[1]
+            if len(message.content.split()) <= 2:
+                n = 5
+            else:
+                n = int(message.content.split()[2])
+            for counter,level in enumerate(await gd_client.search_levels(level_name)):
+                counter += 1
+                if counter >= n or counter >= 99:
+                    break
+                await message.channel.send(level)
+        except IndexError:
+            await message.channel.send('Provide level name and depth in this format:\n$search level_name depth')
+        except Exception as e:
+            await message.channel.send(f'An error has occurred!\n{str(e).capitalize()}')
 
-client.run('Enter your token here!')
+
+client.run('MTIwODM5Mjk4OTY1MTc2MzI0MA.G3vPyH.r9vL_bjTRaENl_gooMr_5taHZAK-YvfviVKP_A')
