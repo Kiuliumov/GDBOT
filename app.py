@@ -3,6 +3,7 @@
 # todo implement level searching based on id or level name
 # todo implement account searching system
 # todo implement pack searching system
+# todo process the token
 import discord
 import gd
 from utils import util_functions
@@ -54,4 +55,4 @@ async def on_message(message):
         except Exception as e:
             await message.channel.send(f'Enter a valid song id! {e}')
 
-client.run('ODMwODIxMTE0MjY3MTcyOTA1.GMdeu2.kzekyW6prlzYL4h6C-7XUa_iVAj5szmZRsMK0Q')
+client.run('Enter your token here!')
