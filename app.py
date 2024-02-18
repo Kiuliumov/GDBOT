@@ -6,7 +6,7 @@ from builders.constants import token, prefix
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
-builder = Builder()
+builder = Builder(1208392989651763240)
 
 
 @client.event

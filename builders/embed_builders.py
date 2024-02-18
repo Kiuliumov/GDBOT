@@ -2,12 +2,15 @@ from client import gd_client
 import discord
 from utils.util_functions import Utils
 from builders.image_processing import Image
-current_image = Image()
-class Builder():
-    def __init__(self):
-        pass
 
-    async def make_level_embed(self,level_id: int):
+current_image = Image(1208392989651763240)
+
+
+class Builder():
+    def __init__(self, app_id):
+        self.app_id = app_id
+    @staticmethod
+    async def make_level_embed(level_id: int):
         level = await gd_client.get_level(level_id)
         if level.stars == 10:
             image = current_image.get_demon_image(difficulty=level.difficulty)
@@ -24,9 +27,8 @@ class Builder():
         embed.add_field(name='Song', value=level.song)
         embed.set_footer(text=f"By the Cantina®")
         return embed
-
-
-    async def make_song_embed(self,song_id: int):
+    @staticmethod
+    async def make_song_embed(song_id: int):
         song = await gd_client.get_song(song_id)
         embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=song.name)
         embed.set_thumbnail(url='https://i.redd.it/r30pn3cei4r81.png')

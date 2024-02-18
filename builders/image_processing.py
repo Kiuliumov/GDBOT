@@ -1,7 +1,7 @@
 
 class Image:
-    def __init__(self):
-        pass
+    def __init__(self,app_id):
+        self.app_id = app_id
 
     def get_image(self,difficulty) -> str:
         difficulty = str(difficulty)[11:]
