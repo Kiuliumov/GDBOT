@@ -1,6 +1,6 @@
 from client import gd_client
 import discord
-from utils.util_functions import generate_random_hex_int
+from utils.util_functions import Utils
 from builders.image_processing import Image
 current_image = Image()
 class Builder():
@@ -13,7 +13,7 @@ class Builder():
             image = current_image.get_demon_image(difficulty=level.difficulty)
         else:
             image = current_image.get_image(difficulty=level.difficulty)
-        embed = discord.Embed(color=generate_random_hex_int()).set_author(name=level)
+        embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=level)
         embed.set_thumbnail(url=image)
         embed.add_field(name='Description:', value=level.description, inline=True)
         embed.add_field(name='Version', value=level.version)
@@ -28,7 +28,7 @@ class Builder():
 
     async def make_song_embed(self,song_id: int):
         song = await gd_client.get_song(song_id)
-        embed = discord.Embed(color=generate_random_hex_int()).set_author(name=song.name)
+        embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=song.name)
         embed.set_thumbnail(url='https://i.redd.it/r30pn3cei4r81.png')
         embed.add_field(name="Song author", value=song.artist.name)
         embed.add_field(name="Song ID", value=song.id)
