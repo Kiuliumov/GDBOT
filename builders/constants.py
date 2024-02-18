@@ -4,3 +4,4 @@ with open('config.json', 'r') as file:
 # constants
 token = data['TOKEN']
 prefix = data['PREFIX']
+app_id = data['APP_ID']

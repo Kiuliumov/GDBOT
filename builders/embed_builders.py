@@ -2,8 +2,9 @@ from client import gd_client
 import discord
 from utils.util_functions import Utils
 from builders.image_processing import Image
+from constants import app_id
 
-current_image = Image(1208392989651763240)
+current_image = Image(app_id)
 
 
 class Builder():

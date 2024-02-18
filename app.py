@@ -1,12 +1,12 @@
 import discord
 from client import gd_client
 from builders.embed_builders import Builder
-from builders.constants import token, prefix
+from builders.constants import token, prefix, app_id
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
-builder = Builder(1208392989651763240)
+builder = Builder(app_id)
 
 
 @client.event
