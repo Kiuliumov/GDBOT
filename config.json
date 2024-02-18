@@ -1,4 +1,6 @@
 {
   "TOKEN":"Place your token here!",
   "PREFIX":"$",
+  "APP_ID": "Place your application ID here!"
+
 }
