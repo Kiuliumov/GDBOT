@@ -5,3 +5,4 @@ with open('config.json', 'r') as file:
 token = data['TOKEN']
 prefix = data['PREFIX']
 app_id = data['APP_ID']
+

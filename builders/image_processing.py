@@ -1,9 +1,9 @@
-
 class Image:
-    def __init__(self,app_id):
+    def __init__(self, app_id):
         self.app_id = app_id
 
-    def get_image(self,difficulty) -> str:
+    @staticmethod
+    def get_image(difficulty) -> str:
         difficulty = str(difficulty)[11:]
         if difficulty == 'AUTO':
             image = 'https://static.wikia.nocookie.net/geometry-dash/images/e/e8/Auto.png/revision/latest/scale-to-width-down/1000?cb=20240128012123'
@@ -22,7 +22,8 @@ class Image:
 
         return image
 
-    def get_demon_image(self,difficulty):
+    @staticmethod
+    def get_demon_image(difficulty):
         difficulty = str(difficulty)[11:]
         if difficulty == 'EASY_DEMON':
             image = 'https://static.wikia.nocookie.net/geometry-dash/images/2/24/EasyDemon.png/revision/latest?cb=20240125115546'
