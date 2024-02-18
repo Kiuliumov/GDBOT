@@ -6,7 +6,7 @@ from constants import app_id
 
 current_image = Image(app_id)
 
-
+# embed builders
 class Builder():
     def __init__(self, app_id):
         self.app_id = app_id
