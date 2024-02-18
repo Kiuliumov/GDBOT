@@ -1,6 +1,6 @@
 import secrets
 
-
+# util functions
 class Utils():
     @staticmethod
     def generate_random_hex_int() -> int:
