@@ -3,13 +3,12 @@ import discord
 from cls.Utils import Utils
 from cls.Image import Image
 from constants import app_id
-from Login import Login
 current_image = Image(app_id)
 
 
-class Builder(Login):
-    def __init__(self, client_id):
-        super().__init__(client_id)
+class Builder:
+    def __init__(self, app_id):
+        self.app_id = app_id
 
     @staticmethod
     async def make_level_embed(level_id: int):
@@ -43,7 +42,7 @@ class Builder(Login):
         return embed
 
     @staticmethod
-    async def make_comments_embed(comment: gd_client.Comment):
+    async def make_comments_embed(comment):
         embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=comment.author)
         embed.description(comment.body)
         embed.set_footer(comment.timestamp)
