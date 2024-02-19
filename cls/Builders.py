@@ -1,15 +1,16 @@
 from client import gd_client
 import discord
-from utils.util_functions import Utils
-from builders.image_processing import Image
+from cls.Utils import Utils
+from cls.Image import Image
 from constants import app_id
-
+from Login import Login
 current_image = Image(app_id)
 
 
-class Builder():
-    def __init__(self, app_id):
-        self.app_id = app_id
+class Builder(Login):
+    def __init__(self, client_id):
+        super().__init__(client_id)
+
     @staticmethod
     async def make_level_embed(level_id: int):
         level = await gd_client.get_level(level_id)
@@ -28,6 +29,7 @@ class Builder():
         embed.add_field(name='Song', value=level.song)
         embed.set_footer(text=f"By the Cantina®")
         return embed
+
     @staticmethod
     async def make_song_embed(song_id: int):
         song = await gd_client.get_song(song_id)
@@ -39,3 +41,9 @@ class Builder():
         embed.add_field(name="Link", value=song.url)
         embed.set_footer(text=f"By the Cantina®")
         return embed
+
+    @staticmethod
+    async def make_comments_embed(comment: gd_client.Comment):
+        embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=comment.author)
+        embed.description(comment.body)
+        embed.set_footer(comment.timestamp)

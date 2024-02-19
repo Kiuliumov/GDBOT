@@ -1,17 +1,18 @@
 import discord
 from discord.ext import commands
 from client import gd_client
-from builders.embed_builders import Builder
-from builders import constants
-from builders.search import Search
+from cls.Builders import Builder
+import constants
+from cls.Search import Search
 from images import text_art
-
+from cls.Loader import Loader
 intents = discord.Intents.default()
 intents.message_content = True
 client = commands.Bot(command_prefix='$', intents=intents)
 
 builder = Builder(constants.app_id)
 search = Search(constants.app_id)
+loader = Loader(constants.app_id)
 
 @client.event
 async def on_ready():
@@ -77,5 +78,14 @@ async def find_user(interaction: discord.Interaction, username: str):
         await interaction.response.send_message(embed=embed)
     except Exception as e:
         await interaction.response.send_message(f'An error has occurred!\n{str(e).capitalize()}')
-
+@client.tree.command(name='load_user_comments',description='Loads user comments to a certain depth.The default is 5 and the current max is 99')
+async def load_user_comments(interaction: discord.Interaction,username: str,depth: int = None):
+        comments = loader.load_comments(username)
+        index = 0
+        for index,comment in enumerate(comments):
+            index += 1
+            if index > depth or index > 10:
+                break
+            await builder.make_comments_embed(comment)
+            await interaction.response.send_message(embed=embed)
 client.run(constants.token)

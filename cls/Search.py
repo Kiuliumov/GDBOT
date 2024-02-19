@@ -1,9 +1,10 @@
 from client import gd_client
+from Login import Login
 
 
-class Search:
+class Search(Login):
     def __init__(self, app_id):
-        self.id = app_id
+        super.__init__(app_id)
 
     @staticmethod
     async def search_level(name: str, depth=5) -> list:
@@ -13,7 +14,6 @@ class Search:
                 break
             level_ids.append(level.id)
         return level_ids
-
 
     @staticmethod
     async def search_for_user(name: str) -> int:
