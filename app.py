@@ -10,9 +10,9 @@ intents = discord.Intents.default()
 intents.message_content = True
 client = commands.Bot(command_prefix='$', intents=intents)
 
-builder = Builder(constants.app_id)
-search = Search(constants.app_id)
-loader = Loader(constants.app_id)
+builder = Builder()
+search = Search()
+loader = Loader()
 
 @client.event
 async def on_ready():
@@ -62,14 +62,15 @@ async def search_level(interaction: discord.Interaction, name: str, depth: int =
             level_ids = await Search.search_level(name, depth)
         else:
             level_ids = await Search.search_level(name)
+        await interaction.response.send_message(f'Searching for levels with name: {name}')
         for ID in level_ids:
             try:
                 embed = await builder.make_level_embed(ID)
-                await interaction.response.send_message(embed=embed)
+                await interaction.channel.send(embed=embed)
             except Exception as e:
-                await interaction.response.send_message(str(e))
+                await interaction.channel.send(str(e))
     except Exception as e:
-        await interaction.response.send_message(f'An error has occurred!\n{str(e).capitalize()}')
+        await interaction.channel.send(f'An error has occurred!\n{str(e).capitalize()}')
 
 @client.tree.command(name='find_user', description='Find a user in Geometry Dash')
 async def find_user(interaction: discord.Interaction, username: str):
@@ -78,14 +79,21 @@ async def find_user(interaction: discord.Interaction, username: str):
         await interaction.response.send_message(embed=embed)
     except Exception as e:
         await interaction.response.send_message(f'An error has occurred!\n{str(e).capitalize()}')
-@client.tree.command(name='load_user_comments',description='Loads user comments to a certain depth.The default is 5 and the current max is 99')
-async def load_user_comments(interaction: discord.Interaction,username: str,depth: int = None):
-        comments = loader.load_comments(username)
-        index = 0
-        for index,comment in enumerate(comments):
+@client.tree.command(name='load_user_levels',description='Loads user comments to a certain depth.')
+async def load_user_levels(interaction: discord.Interaction,username: str,depth: int = 5):
+    try:
+        levels = await loader.load_levels(username)
+        await interaction.response.send_message(f"{username}'s levels:")
+        for index,level in enumerate(levels):
             index += 1
-            if index > depth or index > 10:
+            if index > depth or index > 50:
                 break
-            await builder.make_comments_embed(comment)
-            await interaction.response.send_message(embed=embed)
+            try:
+                embed = await builder.make_level_embed(level.id)
+                await interaction.channel.send('https://i.imgur.com/IIpYiGq.png')
+                await interaction.channel.send(embed=embed)
+            except Exception as e:
+                await interaction.channel.send(f'gd.py is still outdated for levels from the new update!\nCould not fetch info for {level}')
+    except Exception as e:
+        await interaction.channel.send("Couldn't fetch levels for user:" + " " + username)
 client.run(constants.token)

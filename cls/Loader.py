@@ -1,12 +1,17 @@
-from Login import Login
 from client import gd_client
 
 
-class Loader(Login):
-    def __init__(self, client_id):
-        super().__init__(client_id)
+class Loader:
 
     @staticmethod
-    def load_comments(username):
-        user = gd_client.search_user(username)
-        return user.get_comments()
+    async def load_levels(username):
+        user: gd_client.AbstractUser = await gd_client.search_user(username)
+        levels = await user.get_levels()
+        return levels
+
+    @staticmethod
+    async def load_comments(username):
+        user: gd_client.AbstractUser = await gd_client.search_user(username)
+        comments = await user.get_comments()
+        return comments
+

@@ -1,8 +1,6 @@
 
 
 class Image():
-    def __init__(self, app_id):
-        self.app_id = app_id
 
     @staticmethod
     def get_image(difficulty) -> str:

@@ -1,5 +1,6 @@
 import secrets
 
+
 # util functions
 class Utils():
     @staticmethod
