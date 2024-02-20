@@ -87,7 +87,7 @@ async def search_level(interaction: discord.Interaction, name: str, depth: int =
                 builder.id = ID
                 embed = await builder.make_level_embed()
                 await interaction.channel.send(embed=embed)
-                await interaction.channel.send('-----------------------------------------------------')
+                await interaction.channel.send('----------------------------------------------------------------------------------------------------------')
             except Exception as e:
                 await interaction.channel.send(str(e))
     except Exception as e:
@@ -119,10 +119,13 @@ async def load_user_levels(interaction: discord.Interaction,username: str,depth:
             try:
                 builder.id = level.id
                 embed = await builder.make_level_embed()
-                await interaction.channel.send('-----------------------------------------------------')
+                await interaction.channel.send('----------------------------------------------------------------------------------------------------------')
                 await interaction.channel.send(embed=embed)
             except Exception as e:
                 await interaction.channel.send(f'gd.py is still outdated for levels from the new update!\nCould not fetch info for {level}')
     except Exception as e:
-        await interaction.channel.send("Couldn't fetch levels for user:" + " " + username)
+        await interaction.response.send_message("Couldn't fetch levels for user:" + " " + username)
+@client.tree.command(name='test')
+async def test(interaction,emoji: str):
+    await interaction.response.send_message(emoji)
 client.run(TOKEN)
