@@ -125,7 +125,5 @@ async def load_user_levels(interaction: discord.Interaction,username: str,depth:
                 await interaction.channel.send(f'gd.py is still outdated for levels from the new update!\nCould not fetch info for {level}')
     except Exception as e:
         await interaction.response.send_message("Couldn't fetch levels for user:" + " " + username)
-@client.tree.command(name='test')
-async def test(interaction,emoji: str):
-    await interaction.response.send_message(emoji)
+
 client.run(TOKEN)
