@@ -1,4 +1,4 @@
-DICT_OF_IMAGES = {
+difficulty_images = {
         'AUTO': 'https://static.wikia.nocookie.net/geometry-dash/images/e/e8/Auto.png/revision/latest/scale-to-width-down/1000?cb=20240128012123',
         'EASY': 'https://static.wikia.nocookie.net/geometry-dash/images/7/7a/Easy.png/revision/latest/scale-to-width-down/1000?cb=20240128012431',
         'NORMAL': 'https://static.wikia.nocookie.net/geometry-dash/images/f/fb/Normal.png/revision/latest/scale-to-width-down/1000?cb=20231027082451',

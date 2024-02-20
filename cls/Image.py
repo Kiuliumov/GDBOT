@@ -1,8 +1,9 @@
-from images.difficulty_images import DICT_OF_IMAGES
+from images import difficulty_images,emojis
 
 
 class Image:
-    DIFFICULTY_IMAGES = DICT_OF_IMAGES
+    DIFFICULTY_IMAGES = difficulty_images.difficulty_images
+    EMOJIS = emojis.emojis
 
     def __init__(self, difficulty):
         self.difficulty = difficulty
