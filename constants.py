@@ -1,8 +1,7 @@
-import json
-with open('config.json', 'r') as file:
-    data = json.load(file)
-# constants
-token = data['TOKEN']
-prefix = data['PREFIX']
-app_id = data['APP_ID']
-banned = data['BANNED']
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv('TOKEN')
+APP_ID = os.getenv('APP_ID')
+PREFIX = os.getenv('PREFIX')
