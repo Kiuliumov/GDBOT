@@ -11,7 +11,7 @@ class Builder:
 
     async def make_level_embed(self):
         level = await gd_client.get_level(self.id)
-        image = Image(level.difficulty[11:]).get_image()
+        image = Image(str(level.difficulty)[11:]).get_image()
         embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=level)
         embed.set_thumbnail(url=image)
         embed.add_field(name='Description:', value=level.description, inline=True)
@@ -42,18 +42,15 @@ class Builder:
         user: gd_client.AbstractUser = await gd_client.search_user(self.username)
         embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=user.name)
         embed.set_thumbnail(
-            url='https://images-eds-ssl.xboxlive.com/image?url=4rt9'
-                '.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBaGbzz'
-                '_YTm90RlqatdfM6i.KS85qWpz59Ng19gHw42IuA5zqiP5GSXgIcvyalSoGK8hTw'
-                'L2jCqbv5wfAhim5cQA-&format=source')
-        embed.add_field(name="Leaderboard rank", value=user.statistics.rank, inline=True)
-        embed.add_field(name="Stars", value=user.statistics.stars)
-        embed.add_field(name="Diamonds", value=user.statistics.diamonds)
-        embed.add_field(name="Secret coins", value=user.statistics.secret_coins)
-        embed.add_field(name="User coins", value=user.statistics.user_coins)
-        embed.add_field(name="Demons", value=user.statistics.demons)
+            url='https://gdbrowser.com/assets/search-user.png')
+        embed.add_field(name="Leaderboard rank :<:GDLeaderboards:1193036399348305920>", value=user.statistics.rank, inline=True)
+        embed.add_field(name="Stars <:STAR:905195588721717250>", value=user.statistics.stars)
+        embed.add_field(name="Diamonds <:diamonds:884575751301660682>", value=user.statistics.diamonds)
+        embed.add_field(name="Secret coins <:secretcoins:884575795987771392>", value=user.statistics.secret_coins)
+        embed.add_field(name="User coins <:UserCoin:831285661306716190>", value=user.statistics.user_coins)
+        embed.add_field(name="Demons <:demons:884575831354118164>", value=user.statistics.demons)
         if user.statistics.creator_points:
-            embed.add_field(name="Creator Points", value=user.statistics.creator_points)
+            embed.add_field(name="Creator Points <:CreatorPoints:414518237196189696> ", value=user.statistics.creator_points)
         embed.add_field(name="User ID", value=user.id)
         embed.set_footer(text=f"By the Cantina®")
         return embed
