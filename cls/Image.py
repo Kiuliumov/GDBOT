@@ -1,4 +1,4 @@
-from images import difficulty_images,emojis
+from images import difficulty_images, emojis
 
 
 class Image:
@@ -12,3 +12,9 @@ class Image:
         return self.DIFFICULTY_IMAGES.get(self.difficulty,
                                           self.DIFFICULTY_IMAGES[
                                               'UNRATED' if 'DEMON' not in self.difficulty else 'HARD_DEMON'])
+
+    def get_emoji(self, emoji_type):
+        if emoji_type not in self.EMOJIS:
+            print('Emoji not found.')
+        else:
+            return self.EMOJIS[emoji_type]
