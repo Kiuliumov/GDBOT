@@ -1,11 +1,11 @@
-from images import difficulty_images, emojis
+from images import difficulty_images, emoji_ids
 
 
 class Image:
     DIFFICULTY_IMAGES = difficulty_images.difficulty_images
-    EMOJIS = emojis.emojis
+    EMOJIS = emoji_ids.emojis
 
-    def __init__(self, difficulty):
+    def __init__(self, difficulty=None):
         self.difficulty = difficulty
 
     def get_image(self) -> str:
