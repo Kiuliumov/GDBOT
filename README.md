@@ -27,14 +27,13 @@ The commands are still under construction
 The bot is configured using environment variables stored in the `.env` file. Ensure that you have filled out the necessary variables before running the bot.
 
 ## Screenshots
-![Screenshot 1](screenshots/screenshot1.png)
-![Screenshot 2](screenshots/screenshot2.png)
-![Screenshot 3](screenshots/screenshot3.png)
-![Screenshot 4](screenshots/screenshot4.png)
-![Screenshot 5](screenshots/screenshot5.png)
-![Screenshot 6](screenshots/screenshot6.png)
-![Screenshot 7](screenshots/screenshot7.png)
-```
+![Screenshot 1](Screenshots/Screenshot_1.png)
+![Screenshot 2](Screenshots/Screenshot_2.png)
+![Screenshot 3](Screenshots/Screenshot_3.png)
+![Screenshot 4](Screenshots/Screenshot_4.png)
+![Screenshot 5](Screenshots/Screenshot_5.png)
+![Screenshot 6](Screenshots/Screenshot_6.png)
+![Screenshot 7](Screenshots/Screenshot_7.png)
 
 ## Support
 If you encounter any issues or have any questions about the bot, feel free to open an issue on GitHub or contact the developer directly.
