@@ -39,9 +39,8 @@ Returns an embed with the Newgrounds page of a song. You also have the option to
 Returns an embed that you can update with two buttons (Previous | Next) that allow you to navigate through all found levels.
 /song (query: song_id) -> Returns an embed with the newgrounds page of a song. You also have the option to download the song.
 
-/search (query: level_name) -> Returns an embed that you can update with two buttons (Previous | Next) that allow you to navigate trough all found levels.
 ## Configuration
-The bot is configured using environment variables stored in the `.env` file. Ensure that you have filled out the necessary variables before running the bot.
+The bot is configured using environment variables stored in the `.env` file. Ensure that you have filled out the necessary variables before running the bot.Then you can run the bot from the ` run.exe` 
 
 ## Screenshots
 ![Screenshot 1](Screenshots/Screenshot_1.png)
