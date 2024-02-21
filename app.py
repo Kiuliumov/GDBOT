@@ -8,6 +8,8 @@ from constants import TOKEN, PREFIX
 intents = discord.Intents.default()
 intents.message_content = True
 client = commands.Bot(command_prefix=PREFIX, intents=intents)
+from cls.Views import Download
+from cls.Utils import Utils
 
 
 @client.event
@@ -63,12 +65,13 @@ async def weekly(interaction: discord.Interaction):
 @client.tree.command(name='song', description='Get information about a song in Geometry Dash')
 async def song(interaction: discord.Interaction, song_id: int):
     try:
-        builder = Builder(ID=song_id)
-        embed = await builder.make_song_embed(song_id)
-        await interaction.response.send_message(embed=embed)
+        embed = await Builder.make_song_embed(song_id)
+        current_song_download_url = await gd_client.get_song(song_id)
+        current_song_download_url = current_song_download_url.download_url
+        await interaction.response.send_message(embed=embed,view=Download())
+        Download.song_id = song_id
     except Exception as e:
         await interaction.response.send_message(f'An error has occurred!\n{str(e).capitalize()}')
-
 
 
 
@@ -83,13 +86,10 @@ async def search_level(interaction: discord.Interaction, name: str, depth: int =
         await interaction.response.send_message(f'Searching for levels with name: {name}')
         builder = Builder()
         for ID in level_ids:
-            try:
-                builder.id = ID
-                embed = await builder.make_level_embed()
-                await interaction.channel.send(embed=embed)
-                await interaction.channel.send('----------------------------------------------------------------------------------------------------------')
-            except Exception as e:
-                await interaction.channel.send(str(e))
+            builder.id = ID
+            embed = await builder.make_level_embed()
+            await interaction.channel.send(embed=embed)
+            await interaction.channel.send('----------------------------------------------------------------------------------------------------------')
     except Exception as e:
         await interaction.channel.send(f'An error has occurred!\n{str(e).capitalize()}')
 
