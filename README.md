@@ -1,3 +1,4 @@
+j
 
 # GD Bot - Geometry Dash Discord Application
 
@@ -41,15 +42,6 @@ Returns an embed that you can update with two buttons (Previous | Next) that all
 
 ## Configuration
 The bot is configured using environment variables stored in the `.env` file. Ensure that you have filled out the necessary variables before running the bot.Then you can run the bot from the ` run.exe` 
-
-## Screenshots
-![Screenshot 1](Screenshots/Screenshot_1.png)
-![Screenshot 2](Screenshots/Screenshot_2.png)
-![Screenshot 3](Screenshots/Screenshot_3.png)
-![Screenshot 4](Screenshots/Screenshot_4.png)
-![Screenshot 5](Screenshots/Screenshot_5.png)
-![Screenshot 6](Screenshots/Screenshot_6.png)
-![Screenshot 7](Screenshots/Screenshot_7.png)
 
 ## Support
 If you encounter any issues or have any questions about the bot, feel free to open an issue on GitHub or contact the developer directly.
