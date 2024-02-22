@@ -3,7 +3,6 @@ import discord
 from cls.Utils import Utils
 from cls.Image import Image
 
-
 class Builder:
     def __init__(self, username='', ID=0):
         self.id = int(ID)
@@ -12,7 +11,7 @@ class Builder:
     async def make_level_embed(self):
         level = await gd_client.get_level(self.id)
         image = Image(str(level.difficulty)[11:]).get_image()
-        embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=level)
+        embed = discord.Embed(title=level,color=Utils.generate_random_hex_int())
         embed.set_thumbnail(url=image)
         embed.add_field(name='Description:', value=level.description, inline=True)
         embed.add_field(name='Version', value=level.version)
@@ -21,10 +20,9 @@ class Builder:
         else:
             embed.add_field(name='Stars', value='Level is not rated!')
         embed.add_field(name='Downloads', value=level.downloads)
-        embed.add_field(name='Version', value=level.rating)
+        embed.add_field(name='Likes', value=level.rating)
         embed.add_field(name='Creator', value=level.creator)
         embed.add_field(name='Song', value=level.song)
-        embed.set_footer(text=f"By the Cantina®")
         return embed
 
     async def make_song_embed(self):
