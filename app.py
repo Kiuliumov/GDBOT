@@ -99,8 +99,6 @@ async def load_user_levels(interaction: discord.Interaction, username: str, dept
             try:
                 builder.id = level.id
                 embed = await builder.make_level_embed()
-                await interaction.channel.send(
-                    '----------------------------------------------------------------------------------------------------------')
                 await interaction.channel.send(embed=embed)
             except Exception as e:
                 await interaction.channel.send(
