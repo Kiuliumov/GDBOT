@@ -5,12 +5,12 @@ from cls.Builders import Builder
 from cls.Search import Search
 from images import text_art
 from constants import TOKEN, PREFIX
-intents = discord.Intents.default()
-intents.message_content = True
-client = commands.Bot(command_prefix=PREFIX, intents=intents)
 from cls.Views import Download
 from cls.Utils import Utils
 
+intents = discord.Intents.default()
+intents.message_content = True
+client = commands.Bot(command_prefix=PREFIX, intents=intents)
 
 @client.event
 async def on_ready():
