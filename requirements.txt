@@ -1,1 +1,4 @@
-
+discord
+gd.py
+fastapi
+dotenv
