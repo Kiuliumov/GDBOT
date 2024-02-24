@@ -25,22 +25,23 @@ GD Bot is a discord application built with the help of the gd.py api wrapper.It 
 
 ### /daily
 Returns an embed with statistics of the current daily level.
-
+![Daily](Screenshots/daily.png)
 ### /weekly
 Returns an embed with statistics of the current weekly level.
-
-### /find_user (query: username)
+![Weekly](Screenshots/weekly.png)
+### /find_user (`query: username`)
 Returns an embed with account statistics of a given user.
-
-### /song (query: song_id)
+![User](Screenshots/creator.png)
+### /song (`query: song_id`)
 Returns an embed with the Newgrounds page of a song. You also have the option to download the song.
-
+![Song](Screenshots/song.png)
 ### /search (query: level_name)
-Returns an embed that you can update with two buttons (Previous | Next) that allow you to navigate through all found levels.
-/song (query: song_id) -> Returns an embed with the newgrounds page of a song. You also have the option to download the song.
+Returns an embed that you can update with buttons `(Previous | Next)` that allow you to navigate through all found levels.You can also get the creator's user account and the song's page.
+![Search](Screenshots/search.png)
 
 ## Configuration
 The bot is configured using environment variables stored in the `.env` file. Ensure that you have filled out the necessary variables before running the bot.Then you can run the bot from the ` run.exe` 
+![Run](Screenshots/run.png)
 
 ## Support
 If you encounter any issues or have any questions about the bot, feel free to open an issue on GitHub or contact the developer directly.

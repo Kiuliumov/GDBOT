@@ -59,6 +59,13 @@ class Controller(discord.ui.View):
         except Exception:
             await interaction.response.edit_message('Try again!')
 
+    @discord.ui.button(label="Creator", style=discord.ButtonStyle.green)
+    async def creator(self, interaction: discord.Interaction, button: discord.ui.Button):
+        level: gd_client.Level = await gd_client.get_level(level_id=self.level_ids[self.current_index])
+        creator = level.creator
+        embed = await Builder(username=creator).make_user_embed()
+        await interaction.response.send_message(embed=embed)
+
     @discord.ui.button(label="Get Song", style=discord.ButtonStyle.green)
     async def add_bot(self, interaction: discord.Interaction, button: discord.ui.Button):
         level: gd_client.Level = await gd_client.get_level(level_id=self.level_ids[self.current_index])
@@ -66,9 +73,6 @@ class Controller(discord.ui.View):
         embed = await Builder(ID=song_id).make_song_embed()
         await interaction.response.send_message(embed=embed, view=Download(song_id=song_id))
 
-    @discord.ui.button(label="The Cantina", style=discord.ButtonStyle.green)
-    async def server(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.send_message('Under construction!')
 
     @discord.ui.button(label="GitHub Repository", style=discord.ButtonStyle.green)
     async def github(self, interaction: discord.Interaction, button: discord.ui.Button):
