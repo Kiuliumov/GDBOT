@@ -1,18 +1,15 @@
-from cls.Image import Image
-
-image = Image()
-
-
 class Emoji:
-    def __init__(self):
-        self.diamond = image.get_emoji('Diamond')
-        self.leaderboard_1 = image.get_emoji('LeaderboardTrophy01')
-        self.leaderboard_2 = image.get_emoji('LeaderboardTrophy02')
-        self.leaderboard_3 = image.get_emoji('LeaderboardTrophy03')
-        self.leaderboard_4 = image.get_emoji('LeaderboardTrophy04')
-        self.secret_coin = image.get_emoji('Secret_coin')
-        self.user_coin = image.get_emoji('Like')
-        self.star = image.get_emoji('Star')
-        self.download_symbol = image.get_emoji('Download_symbol')
-        self.like = image.get_emoji('Like')
-        self.creator_points = image.get_emoji('CreatorPoints')
+    emojis = {
+        'Diamond': '<:Diamond:1209532134994345994>',
+        'LeaderboardTrophy01': '<:LeaderboardTrophy01:1209532729352265798>',
+        'LeaderboardTrophy02': '<:LeaderboardTrophy02:1209532891109916714>',
+        'LeaderboardTrophy03': '<:LeaderboardTrophy03:1209532889801433128>',
+        'LeaderboardTrophy04': '<:LeaderboardTrophy04:1209532887829839902>',
+        'Secret_coin': '<:Secret_coin:1209531956828708874>',
+        'UserCoin': '<:UserCoin:1209551303450300416>',
+        'Star': '<:Star:1209531836494254171>',
+        'Demon': '<:Demon:1209532225520144435>',
+        'Download_symbol': '<:Download_symbol:1209533569043800165>',
+        'Like': '<:Like:1209533567638577182>',
+        'CreatorPoints': '<:puttingmygeometrydashcreatorpoin:1209532501085659146>',
+    }

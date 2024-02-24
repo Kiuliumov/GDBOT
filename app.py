@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from client import gd_client
+from cls.Loader import Loader
 from cls.Builders import Builder
 from cls.Search import Search
 from images import text_art
@@ -55,8 +56,7 @@ async def weekly(interaction: discord.Interaction):
 async def song(interaction: discord.Interaction, song_id: int):
     try:
         embed = await Builder.make_song_embed(song_id)
-        await interaction.response.send_message(embed=embed, view=Download())
-        Download.song_id = song_id
+        await interaction.response.send_message(embed=embed,view=Download(song_id=song_id))
     except Exception as e:
         await interaction.response.send_message(f'An error has occurred!\n{str(e).capitalize()}')
 
@@ -65,12 +65,12 @@ async def song(interaction: discord.Interaction, song_id: int):
 async def search_level(interaction: discord.Interaction, name: str):
     try:
         level_ids = await Search.search_level(name)
-        Controller.level_ids = level_ids
+        controller = Controller(level_ids=level_ids)
         builder = Builder()
         builder.id = level_ids[0]
         embed = await builder.make_level_embed()
         embed.set_author(name=f'Level 1 out of {len(level_ids)}')
-        await interaction.response.send_message(embed=embed, view=Controller())
+        await interaction.response.send_message(embed=embed, view=controller)
         Controller.flag = True
     except Exception as e:
         await interaction.channel.send(f'An error has occurred!\n{str(e).capitalize()}')
@@ -87,24 +87,20 @@ async def find_user(interaction: discord.Interaction, username: str):
 
 
 @client.tree.command(name='load_user_levels', description='Loads user comments to a certain depth.')
-async def load_user_levels(interaction: discord.Interaction, username: str, depth: int = 5):
+async def load_user_levels(interaction: discord.Interaction, username: str):
     try:
-        levels = await loader.load_levels(username)
-        await interaction.response.send_message(f"{username}'s levels:")
+        loader = Loader(username)
+        levels = await loader.load_levels()
+        level_ids = [level.id for level in levels]
+        controller = Controller(level_ids=level_ids)
         builder = Builder()
-        for index, level in enumerate(levels):
-            index += 1
-            if index > depth or index > 50:
-                break
-            try:
-                builder.id = level.id
-                embed = await builder.make_level_embed()
-                await interaction.channel.send(embed=embed)
-            except Exception as e:
-                await interaction.channel.send(
-                    f'gd.py is still outdated for levels from the new update!\nCould not fetch info for {level}')
+        builder.id = level_ids[0]
+        embed = await builder.make_level_embed()
+        embed.set_author(name=f'Level 1 out of {len(levels)}')
+        await interaction.response.send_message(embed=embed, view=controller)
+        Controller.flag = True
     except Exception as e:
-        await interaction.response.send_message("Couldn't fetch levels for user:" + " " + username)
+        print(e)
 
 
 client.run(TOKEN)
