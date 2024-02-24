@@ -1,12 +1,12 @@
 import discord
 from discord.ext import commands
 from client import gd_client
-from cls.Loader import Loader
-from cls.Builders import Builder
-from cls.Search import Search
+from src.Loader import Loader
+from src.Builders import Builder
+from src.Search import Search
 from images import text_art
 from constants import TOKEN, PREFIX
-from cls.Views import Download, Controller
+from src.Views import Download, Controller
 
 intents = discord.Intents.default()
 intents.message_content = True
