@@ -1,4 +1,4 @@
-
+#
 # GD Bot - Geometry Dash Discord Application
 
 ## Introduction
