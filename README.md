@@ -35,7 +35,7 @@ Returns an embed with account statistics of a given user.
 ### /song (`query: song_id`)
 Returns an embed with the Newgrounds page of a song. You also have the option to download the song.
 ![Song](Screenshots/song.png)
-### /search (query: level_name)
+### /search (`query: level_name`)
 Returns an embed that you can update with buttons `(Previous | Next)` that allow you to navigate through all found levels.You can also get the creator's user account and the song's page.
 ![Search](Screenshots/search.png)
 
