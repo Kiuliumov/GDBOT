@@ -3,7 +3,7 @@ from client import gd_client
 
 class Loader:
 
-    def __init__(self,username):
+    def __init__(self, username):
         self.username = username
 
     async def load_levels(self):
@@ -16,3 +16,7 @@ class Loader:
         comments = await user.get_comments()
         return comments
 
+    @staticmethod
+    async def load_level_comments(level):
+        comments = await level.get_comments()
+        return comments
