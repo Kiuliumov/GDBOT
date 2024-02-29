@@ -1,2 +1,5 @@
 python app.py
-set /p input=Press any key to continue...
+
+
+
+pause
