@@ -1,12 +1,12 @@
 import discord
 from discord.ext import commands
-from client import gd_client
+from GDBOT.client import gd_client
 from src.Loader import Loader
 from src.Builders import Builder
 from src.Search import Search
 from images import text_art
 from constants import TOKEN, PREFIX
-from src.Views import Download, Controller
+from src.Views import Download, Controller, UserComments
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -34,8 +34,7 @@ async def ping(interaction: discord.Interaction):
 async def daily(interaction: discord.Interaction):
     try:
         daily = await gd_client.get_daily()
-        builder = Builder(ID=daily.id)
-        embed = await builder.make_level_embed()
+        embed = await Builder.make_level_embed(daily.id)
         await interaction.response.send_message(embed=embed)
     except Exception as e:
         await interaction.response.send_message(f'An error has occurred!\n{str(e).capitalize()}')
@@ -45,8 +44,7 @@ async def daily(interaction: discord.Interaction):
 async def weekly(interaction: discord.Interaction):
     try:
         weekly = await gd_client.get_weekly()
-        builder = Builder(ID=weekly.id)
-        embed = await builder.make_level_embed()
+        embed = await Builder.make_level_embed(weekly.id)
         await interaction.response.send_message(embed=embed)
     except Exception as e:
         await interaction.response.send_message(f'An error has occurred!\n{str(e).capitalize()}')
@@ -56,7 +54,7 @@ async def weekly(interaction: discord.Interaction):
 async def song(interaction: discord.Interaction, song_id: int):
     try:
         embed = await Builder.make_song_embed(song_id)
-        await interaction.response.send_message(embed=embed,view=Download(song_id=song_id))
+        await interaction.response.send_message(embed=embed, view=Download(song_id=song_id))
     except Exception as e:
         await interaction.response.send_message(f'An error has occurred!\n{str(e).capitalize()}')
 
@@ -66,9 +64,7 @@ async def search_level(interaction: discord.Interaction, name: str):
     try:
         level_ids = await Search.search_level(name)
         controller = Controller(level_ids=level_ids)
-        builder = Builder()
-        builder.id = level_ids[0]
-        embed = await builder.make_level_embed()
+        embed = await Builder.make_level_embed(level_ids[0])
         embed.set_author(name=f'Level 1 out of {len(level_ids)}')
         await interaction.response.send_message(embed=embed, view=controller)
         Controller.flag = True
@@ -79,8 +75,7 @@ async def search_level(interaction: discord.Interaction, name: str):
 @client.tree.command(name='find_user', description='Find a user in Geometry Dash')
 async def find_user(interaction: discord.Interaction, username: str):
     try:
-        builder = Builder(username=username)
-        embed = await builder.make_user_embed()
+        embed = await Builder.make_user_embed(username)
         await interaction.response.send_message(embed=embed)
     except Exception as e:
         await interaction.response.send_message(f'An error has occurred!\n{str(e).capitalize()}')
@@ -93,14 +88,34 @@ async def load_user_levels(interaction: discord.Interaction, username: str):
         levels = await loader.load_levels()
         level_ids = [level.id for level in levels]
         controller = Controller(level_ids=level_ids)
-        builder = Builder()
-        builder.id = level_ids[0]
-        embed = await builder.make_level_embed()
+        embed = await Builder.make_level_embed(level_ids[0])
         embed.set_author(name=f'Level 1 out of {len(levels)}')
         await interaction.response.send_message(embed=embed, view=controller)
         Controller.flag = True
-    except Exception as e:
-        print(e)
+    except IndexError:
+        try:
+            embed = discord.Embed(
+                title=f'WE CAN\'T GET THIS LEVEL,BECAUSE GD.PY IS NOT UP TO DATE! `id:{level_ids[0]}`')
+            await interaction.response.send_message(embed=embed, view=controller)
+        except Exception:
+            embed = discord.Embed(
+                title=f'`We cannot find user with name:{username}`')
+            await interaction.response.send_message(embed=embed)
+
+
+@client.tree.command(name='load_profile_comments', description='Loads the comments of a user!')
+async def load_profile_comments(interaction: discord, username: str):
+    try:
+        loader = Loader(username)
+        comments = await loader.load_comments()
+        comments_view = UserComments(comments=comments)
+        embed = Builder.make_comments_embed(comments[0])
+        embed.set_author(name=f'Comment 1 out of {len(comments)}')
+        await interaction.response.send_message(embed=embed, view=comments_view)
+    except discord.app_commands.errors.CommandInvokeError:
+        embed = discord.Embed(
+            title=f'`We cannot find user with name:{username}`')
+        await interaction.response.send_message(embed=embed)
 
 
 client.run(TOKEN)
