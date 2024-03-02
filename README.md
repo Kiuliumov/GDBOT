@@ -36,7 +36,7 @@ Returns an embed with the Newgrounds page of a song. You also have the option to
 ![Song](Screenshots/song.png)
 ### /search (`query: level_name`)
 Returns an embed that you can update with buttons `(Previous | Next)` that allow you to navigate through all found levels.You can also get the creator's user account and the song's page.
-![Search](Screenshots/search.png)
+![Search](Screenshots/search_level.png)
 
 ## Configuration
 The bot is configured using environment variables stored in the `.env` file. Ensure that you have filled out the necessary variables before running the bot.Then you can run the bot from the ` run.exe` 
