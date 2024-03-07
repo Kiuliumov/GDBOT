@@ -43,7 +43,7 @@ The bot is configured using environment variables stored in the `.env` file. Ens
 ![Run](Screenshots/run.png)
 
 ## Support
-If you encounter any issues or have any questions about the bot, feel free to open an issue on GitHub or contact me
+If you encounter any issues or have any questions about the bot, feel free to open an issue on GitHub or contact me via discord
 ## Contributing
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository, make your changes, and submit a pull request.
 
