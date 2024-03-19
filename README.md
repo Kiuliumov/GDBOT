@@ -12,7 +12,7 @@ GD Bot is a discord application built with the help of the gd.py api wrapper.It 
 ## Installation
 1. Clone this repository to your local machine.
 2. Install the required dependencies using `pip install -r requirements.txt`.
-3. PS No req
+3. PS No reqirements
 4. Create a `.env` file in the root directory of the project.
 5. Add your Discord bot token and any other necessary environment variables to the `.env` file. Example:
    ```
