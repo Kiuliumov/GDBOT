@@ -12,13 +12,14 @@ GD Bot is a discord application built with the help of the gd.py api wrapper.It 
 ## Installation
 1. Clone this repository to your local machine.
 2. Install the required dependencies using `pip install -r requirements.txt`.
-3. Create a `.env` file in the root directory of the project.
-4. Add your Discord bot token and any other necessary environment variables to the `.env` file. Example:
+3. PS No reqirements yet
+4. Create a `.env` file in the root directory of the project.
+5. Add your Discord bot token and any other necessary environment variables to the `.env` file. Example:
    ```
    TOKEN=your_discord_bot_token
    PREFIX=your_prefix
    APP_ID=your app id
-5. Run the bot using `python bot.py`.
+6. Run the bot using `python bot.py`.
 
 ## Slash Commands
 
@@ -35,16 +36,15 @@ Returns an embed with account statistics of a given user.
 Returns an embed with the Newgrounds page of a song. You also have the option to download the song.
 ![Song](Screenshots/song.png)
 ### /search (`query: level_name`)
-Returns an embed that you can update with buttons `(Previous | Next)` that allow you to navigate through all found levels.You can also get the creator's user account and the song's page.
-![Search](Screenshots/search.png)
+Returns an embed that you can update with buttons `(Previous | Next)` that allow you to navigate through all found levels.You can also get the creator's user account and the song's page and load the comments for a given level.
+![Search](Screenshots/search_level.png)
 
 ## Configuration
 The bot is configured using environment variables stored in the `.env` file. Ensure that you have filled out the necessary variables before running the bot.Then you can run the bot from the ` run.exe` 
 ![Run](Screenshots/run.png)
 
 ## Support
-If you encounter any issues or have any questions about the bot, feel free to open an issue on GitHub or contact the developer directly.
-
+If you encounter any issues or have any questions about the bot, feel free to open an issue on GitHub or contact me via discord
 ## Contributing
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository, make your changes, and submit a pull request.
 
