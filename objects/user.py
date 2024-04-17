@@ -1,5 +1,6 @@
 from GDBOT.client import gd_client
 
+
 class User:
 
     def __init__(self, username, password, discord_id: str):
@@ -33,7 +34,6 @@ class User:
 
         await self.__login()
         return await gd_client.get_comments()
-
 
     async def get_messages(self):
 
