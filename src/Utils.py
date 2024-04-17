@@ -1,8 +1,9 @@
 import secrets
 
 
-# util functions
-class Utils():
+class Utils:
+
+
     @staticmethod
     def generate_random_hex_int() -> int:
         random_int = secrets.randbelow(0xFFFFFF + 1)

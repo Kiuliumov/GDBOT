@@ -1,7 +1,3 @@
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-TOKEN = os.getenv('TOKEN')
-APP_ID = os.getenv('APP_ID')
-PREFIX = os.getenv('PREFIX')
+TOKEN = "MTIwODM5Mjk4OTY1MTc2MzI0MA.GWG5Ov.mtPxhUZ-7GZKTtUsxDZ8mR5VjVGr3Q62u2aAPA"
+PREFIX = "$"
+APP_ID = 1208392989651763240

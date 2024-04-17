@@ -3,8 +3,7 @@ import discord
 from src.Utils import Utils
 from src.Image import Image
 from src.Emoji import Emoji
-from src.Loader import Loader
-import gd
+
 class Builder:
     @staticmethod
     async def make_level_embed(id):
@@ -35,6 +34,7 @@ class Builder:
         embed.add_field(name="Link", value=song.url)
         embed.set_footer(text=f"By the Cantina®")
         return embed
+
     @staticmethod
     async def make_user_embed(username):
         user: gd_client.AbstractUser = await gd_client.search_user(username)
@@ -53,7 +53,7 @@ class Builder:
         return embed
 
     @staticmethod
-    def make_comments_embed(comment: gd.UserComment):
+    def make_comments_embed(comment):
         embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=comment.author.name)
         embed.add_field(name=comment.content, value=str(comment.rating) + Emoji.emojis['Like'],inline=True)
         embed.set_footer(text='By ' + comment.author.name +'      Created at: ' + str(comment.created_at)[:11])
