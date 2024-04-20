@@ -4,12 +4,17 @@ import subprocess
 import customtkinter
 from PIL import Image, ImageTk
 
+
 def change_token_on_click(token: str):
 
     if len(token) < 50:
         raise ValueError("Token must be at least 50 characters long")
 
     constants.TOKEN = token
+
+def change_prefix(prefix: str):
+    constants.PREFIX = prefix
+
 
 def run_bot():
     subprocess.run(['run.bat'], shell=True)
