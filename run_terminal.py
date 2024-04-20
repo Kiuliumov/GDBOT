@@ -24,7 +24,7 @@ def main():
         ""
         "images/title.jpg")
     image = image.resize((200, 200), Image.ANTIALIAS)
-
+1
     tk_image = ImageTk.PhotoImage(image)
 
     image_label = tk.Label(tk, image=tk_image)
