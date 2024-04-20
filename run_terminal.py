@@ -22,21 +22,13 @@ def main():
     tk.configure(bg='#AEF98D')
     image = Image.open(
         ""
-        "images/title.jpg")
+        "images/title.png")
     image = image.resize((200, 200), Image.ANTIALIAS)
-1
     tk_image = ImageTk.PhotoImage(image)
+
 
     image_label = tk.Label(tk, image=tk_image)
     image_label.pack()
-
-
-
-
-
-
-
-
     tk.mainloop()
 
 if __name__ == '__main__':
