@@ -1,5 +1,2 @@
 python app.py
 
-
-
-pause
