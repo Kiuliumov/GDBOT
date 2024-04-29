@@ -49,6 +49,6 @@ If you encounter any issues or have any questions about the bot, feel free to op
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository, make your changes, and submit a pull request.
 
 ## Disclaimer
-This bot is not affiliated with or endorsed by RobTop Games.
+This bot is not affiliated with or endorsed by RobTop Games. If you have any questions you can feel free to contact me!
 
 
