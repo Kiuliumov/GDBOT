@@ -1,13 +1,27 @@
+import gd
+import dbconfig
 from GDBOT.client import gd_client
 
 
 class User:
+    REGISTERED_USERS = []
+    def __init__(self, discord_id: str):
+        dbconfig.create_table()
+        self.id = discord_id
 
-    def __init__(self, username, password, discord_id: str):
-        self.discord_id = discord_id
-        self.username = username
-        self.password = password
-        self._logging_error = None
+    @property
+    def username(self):
+        user = dbconfig.fetch_user()
+        if user is None:
+            raise ValueError("User not found")
+        return user['username']
+
+    @property
+    def password(self):
+        user = dbconfig.fetch_user()
+        if user is not None:
+            raise ValueError("User not found")
+        return user['password']
 
     async def __login(self):
         try:
@@ -35,7 +49,20 @@ class User:
         await self.__login()
         return await gd_client.get_comments()
 
-    async def get_messages(self):
+    @classmethod
+    async def create_user(cls, discord_id: str, username: str, password: str):
 
-        await self.__login()
-        return await gd_client.get_messages()
+        try:
+            await gd_client.login(username, password)
+        except gd.LoginFailed:
+            return None
+
+        dbconfig.insert_user(discord_id, username, password)
+
+        return cls(discord_id)
+
+    @staticmethod
+    def get_user(discord_id: str):
+        for user in User.REGISTERED_USERS:
+            if user.id == discord_id:
+                return user
