@@ -7,7 +7,7 @@ from images import text_art
 from constants import TOKEN, PREFIX
 from src.Views import Download, Controller, UserComments
 from client import client
-from objects.user import User
+from user.user import User
 
 
 
