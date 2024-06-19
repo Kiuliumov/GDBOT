@@ -7,6 +7,10 @@ from images import text_art
 from constants import TOKEN, PREFIX
 from src.Views import Download, Controller, UserComments
 from client import client
+from objects.user import User
+
+
+
 
 @client.event
 async def on_ready():
@@ -124,6 +128,25 @@ async def load_profile_comments(interaction: discord, username: str):
         embed = discord.Embed(
             title=f'`We cannot find user with name:{username}`')
         await interaction.response.send_message(embed=embed)
+
+@client.tree.command(name='login', description='Login into your geometry dash account!')
+async def login(interaction: discord.Interaction, username: str, password: str):
+    user = await User.create_user(str(interaction.user.id), username, password)
+
+    if user is None:
+        return 'Login failed. Please try again.'
+
+    return 'Logged in successfully.'
+
+@client.tree.command(name='get_chests', description='Gets the chests for a given user! Requires login!')
+async def get_chests(interaction: discord.Interaction):
+
+    user = User.get_user(str(interaction.user.id))
+
+    if not user:
+        await interaction.response.send_message('You need to log in first!')
+
+    await interaction.user.send_message(user.get_chests())
 
 
 client.run(TOKEN)
