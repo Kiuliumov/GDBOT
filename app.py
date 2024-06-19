@@ -1,5 +1,4 @@
 import discord
-from discord.ext import commands
 from GDBOT.client import gd_client
 from src.Loader import Loader
 from src.Builders import Builder
@@ -7,12 +6,24 @@ from src.Search import Search
 from images import text_art
 from constants import TOKEN, PREFIX
 from src.Views import Download, Controller, UserComments
-
-intents = discord.Intents.default()
-intents.message_content = True
-client = commands.Bot(command_prefix=PREFIX, intents=intents)
+from client import client
+from user.user import User
 
 
+
+
+@client.event
+async def on_ready():
+
+
+    print(client.user)
+    print(client.user.id)
+    try:
+        synced = await client.tree.sync()
+        print(f'Synced {len(synced)} command(s)')
+        print(text_art.computer)
+    except Exception as e:
+        print(e)
 @client.event
 async def on_ready():
     print(client.user)
@@ -74,6 +85,7 @@ async def search_level(interaction: discord.Interaction, name: str):
 
 @client.tree.command(name='find_user', description='Find a user in Geometry Dash')
 async def find_user(interaction: discord.Interaction, username: str):
+
     try:
         embed = await Builder.make_user_embed(username)
         await interaction.response.send_message(embed=embed)
@@ -116,6 +128,25 @@ async def load_profile_comments(interaction: discord, username: str):
         embed = discord.Embed(
             title=f'`We cannot find user with name:{username}`')
         await interaction.response.send_message(embed=embed)
+
+@client.tree.command(name='login', description='Login into your geometry dash account!')
+async def login(interaction: discord.Interaction, username: str, password: str):
+    user = await User.create_user(str(interaction.user.id), username, password)
+
+    if user is None:
+        return 'Login failed. Please try again.'
+
+    return 'Logged in successfully.'
+
+@client.tree.command(name='get_chests', description='Gets the chests for a given user! Requires login!')
+async def get_chests(interaction: discord.Interaction):
+
+    user = User.get_user(str(interaction.user.id))
+
+    if not user:
+        await interaction.response.send_message('You need to log in first!')
+
+    await interaction.user.send_message(user.get_chests())
 
 
 client.run(TOKEN)

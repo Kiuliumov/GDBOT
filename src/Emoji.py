@@ -13,3 +13,7 @@ class Emoji:
         'Like': '<:Like:1209533567638577182>',
         'CreatorPoints': '<:puttingmygeometrydashcreatorpoin:1209532501085659146>',
     }
+
+    """"
+    Emojis for embed creation
+    """
