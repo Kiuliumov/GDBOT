@@ -5,7 +5,9 @@ from src.Builders import Builder
 from src.Search import Search
 from images import text_art
 from constants import TOKEN, PREFIX
-from src.Views import Download, Controller, UserComments
+from views.comments import UserComments
+from views.download_song_button import Download
+from views.levels_controller import Controller
 from client import client
 from user.user import User
 
