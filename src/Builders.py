@@ -6,7 +6,17 @@ from src.Emoji import Emoji
 
 class Builder:
     @staticmethod
-    async def make_level_embed(id):
+    async def make_level_embed(id: str) -> discord.Embed:
+
+        """
+
+        :param id: str:
+        :return: discord.Embed object
+
+        Creates an embed that contains the description, version information, star count, download count, like count, creator name and song name of a given Geometry Dash level.
+
+        """
+
         level = await gd_client.get_level(id)
         image = Image(str(level.difficulty)[11:]).get_image()
         embed = discord.Embed(title=level, color=Utils.generate_random_hex_int())
@@ -24,7 +34,16 @@ class Builder:
         return embed
 
     @staticmethod
-    async def make_song_embed(id):
+    async def make_song_embed(id: str) -> discord.Embed:
+
+        """
+
+        :param id: str:
+        :return: discord.Embed object
+
+         Creates an embed that contains the url, author, id and link of a given newgrounds song.
+
+        """
         song = await gd_client.get_song(id)
         embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=song.name)
         embed.set_thumbnail(url='https://i.redd.it/r30pn3cei4r81.png')
@@ -36,7 +55,15 @@ class Builder:
         return embed
 
     @staticmethod
-    async def make_user_embed(username):
+    async def make_user_embed(username: str) -> discord.Embed:
+
+        """
+        :param username: str:
+        :return: discord.Embed object
+
+        Creates an embed that contains the leaderboard rank, star count, diamond count, secret coin count, user coin count and demon count of a given Geometry Dash user.
+        """
+
         user: gd_client.AbstractUser = await gd_client.search_user(username)
         if user.statistics.rank == 0:
             user.statistics.rank = 'This user is banned from the leaderboards!'
@@ -54,6 +81,12 @@ class Builder:
 
     @staticmethod
     def make_comments_embed(comment):
+        """"
+        :param comment: gd.Comment object
+        :return: gd.Embed object
+
+        Creates an embed after being passed a comment. Contains information about the comment text, like count and creation time.
+        """
         embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=comment.author.name)
         embed.add_field(name=comment.content, value=str(comment.rating) + Emoji.emojis['Like'],inline=True)
         embed.set_footer(text='By ' + comment.author.name +'      Created at: ' + str(comment.created_at)[:11])
