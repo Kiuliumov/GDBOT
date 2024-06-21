@@ -5,21 +5,22 @@ from GDBOT.client import gd_client
 
 class User:
     REGISTERED_USERS = []
+
     def __init__(self, discord_id: str):
         dbconfig.create_table()
         self.id = discord_id
 
     @property
     def username(self):
-        user = dbconfig.fetch_user()
+        user = dbconfig.fetch_user(self.id)
         if user is None:
             raise ValueError("User not found")
         return user['username']
 
     @property
     def password(self):
-        user = dbconfig.fetch_user()
-        if user is not None:
+        user = dbconfig.fetch_user(self.id)
+        if user is None:
             raise ValueError("User not found")
         return user['password']
 
