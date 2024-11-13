@@ -5,7 +5,7 @@ GD Bot is a discord application built with the help of the gd.py api wrapper.It 
 
 ## Features
 - **Level Searching:** Search for Geometry Dash levels right from Discord.
-- **User Accounts:** Manage your Geometry Dash user account directly from Discord.You can send friend requests,load comment,levels and more...
+- **User Accounts:** Manage your Geometry Dash user account directly from Discord.You can send friend requests,load comment,levels, songs and more...
 - **GD Server Integration:** Log into the GD servers to access your account and perform actions.
 - **Reward Collection:** Collect rewards from completed levels or achievements.
 
