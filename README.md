@@ -19,7 +19,7 @@ GD Bot is a discord application built with the help of the gd.py api wrapper.It 
    TOKEN=your_discord_bot_token
    PREFIX=your_prefix
    APP_ID=your app id
-6. Run the bot using `python bot.py`.
+6. Run using `python bot.py`.
 
 ## Slash Commands
 
