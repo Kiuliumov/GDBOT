@@ -1,8 +1,8 @@
 from client import gd_client
 import discord
-from src.Utils import Utils
-from src.Image import Image
-from src.Emoji import Emoji
+from src.utils import Utils
+from src.image import Image
+from src.emoji import Emoji
 
 class Builder:
     @staticmethod
