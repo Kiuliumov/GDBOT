@@ -9,7 +9,6 @@ from src.utils import Utils
 class Builder:
     @staticmethod
     async def make_level_embed(id: str) -> discord.Embed:
-
         """
 
         :param id: str:
@@ -34,7 +33,6 @@ class Builder:
 
     @staticmethod
     async def make_song_embed(id: str) -> discord.Embed:
-
         """
 
         :param id: str:
@@ -55,7 +53,6 @@ class Builder:
 
     @staticmethod
     async def make_user_embed(username: str) -> discord.Embed:
-
         """
         :param username: str:
         :return: discord.Embed object
@@ -87,6 +84,6 @@ class Builder:
         Creates an embed after being passed a comment. Contains information about the comment text, like count and creation time.
         """
         embed = discord.Embed(color=Utils.generate_random_hex_int()).set_author(name=comment.author.name)
-        embed.add_field(name=comment.content, value=str(comment.rating) + Emoji.emojis['Like'],inline=True)
-        embed.set_footer(text='By ' + comment.author.name +'      Created at: ' + str(comment.created_at)[:11])
+        embed.add_field(name=comment.content, value=str(comment.rating) + Emoji.emojis['Like'], inline=True)
+        embed.set_footer(text='By ' + comment.author.name + '      Created at: ' + str(comment.created_at)[:11])
         return embed
