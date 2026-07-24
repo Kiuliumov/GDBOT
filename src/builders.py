@@ -25,10 +25,7 @@ class Builder:
         embed.set_thumbnail(url=image)
         embed.add_field(name='Description:', value=level.description, inline=True)
         embed.add_field(name='Version', value=level.version)
-        if level.stars:
-            embed.add_field(name='Stars', value=level.stars)
-        else:
-            embed.add_field(name='Stars', value='Level is not rated!')
+        embed.add_field(name='Stars', value=level.stars if level.stars else 'Level is not rated!')
         embed.add_field(name='Downloads', value=level.downloads)
         embed.add_field(name='Likes', value=level.rating)
         embed.add_field(name='Creator', value=level.creator)
