@@ -1,8 +1,8 @@
 import discord
 from GDBOT.client import gd_client
-from src.Loader import Loader
-from src.Builders import Builder
-from src.Search import Search
+from src.loader import Loader
+from src.builders import Builder
+from src.search import Search
 from images import text_art
 from constants import TOKEN, PREFIX
 from views.comments import UserComments
