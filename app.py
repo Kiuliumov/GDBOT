@@ -1,7 +1,7 @@
 import discord
 
 from client import client
-from constants import PREFIX, TOKEN
+from constants import TOKEN
 from GDBOT.client import gd_client
 from images import text_art
 from src.builders import Builder
