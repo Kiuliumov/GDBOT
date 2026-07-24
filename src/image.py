@@ -9,12 +9,12 @@ class Image:
         self.difficulty = difficulty
 
     def get_image(self) -> str:
-        return self.DIFFICULTY_IMAGES.get(self.difficulty,
-                                          self.DIFFICULTY_IMAGES[
-                                              'UNRATED' if 'DEMON' not in self.difficulty else 'HARD_DEMON'])
+        return self.DIFFICULTY_IMAGES.get(
+            self.difficulty, self.DIFFICULTY_IMAGES["UNRATED" if "DEMON" not in self.difficulty else "HARD_DEMON"]
+        )
 
     def get_emoji(self, emoji_type):
         if emoji_type not in self.EMOJIS:
-            print('Emoji not found.')
+            print("Emoji not found.")
         else:
             return self.EMOJIS[emoji_type]

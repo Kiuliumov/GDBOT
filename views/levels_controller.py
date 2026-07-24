@@ -11,24 +11,24 @@ class Controller(discord.ui.View):
         self.level_ids = level_ids
         self.current_index = 0
 
-    @discord.ui.button(label='', style=discord.ButtonStyle.green, emoji='<:arrowleft:1210243998384652308> ')
+    @discord.ui.button(label="", style=discord.ButtonStyle.green, emoji="<:arrowleft:1210243998384652308> ")
     async def prev_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         try:
             self.current_index = (self.current_index - 1) % len(self.level_ids)
             level_id = self.level_ids[self.current_index]
             embed = await Builder.make_level_embed(level_id)
-            embed.set_author(name=f'Level {self.current_index + 1} out of {len(self.level_ids)}')
+            embed.set_author(name=f"Level {self.current_index + 1} out of {len(self.level_ids)}")
             await interaction.response.edit_message(embed=embed)
         except Exception:
             await self.handle_error(interaction)
 
-    @discord.ui.button(label='', style=discord.ButtonStyle.green, emoji='<:arrowright:1210243999982682173>  ')
+    @discord.ui.button(label="", style=discord.ButtonStyle.green, emoji="<:arrowright:1210243999982682173>  ")
     async def next_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         try:
             self.current_index = (self.current_index + 1) % len(self.level_ids)
             level_id = self.level_ids[self.current_index]
             embed = await Builder.make_level_embed(level_id)
-            embed.set_author(name=f'Level {self.current_index + 1} out of {len(self.level_ids)}')
+            embed.set_author(name=f"Level {self.current_index + 1} out of {len(self.level_ids)}")
             await interaction.response.edit_message(embed=embed)
         except Exception:
             await self.handle_error(interaction)
@@ -59,10 +59,8 @@ class Controller(discord.ui.View):
         comments = await Loader.load_level_comments(level)
         embed = Builder.make_comments_embed(comments)
         comments_view = UserComments(comments=comments)
-        await interaction.response.send_message(embed=embed,view=comments_view)
+        await interaction.response.send_message(embed=embed, view=comments_view)
 
     async def handle_error(self, interaction: discord.Interaction):
-        embed = discord.Embed(title='An error occurred!')
+        embed = discord.Embed(title="An error occurred!")
         await interaction.response.send_message(embed=embed)
-
-

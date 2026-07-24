@@ -16,14 +16,14 @@ class User:
         user = dbconfig.fetch_user(self.id)
         if user is None:
             raise ValueError("User not found")
-        return user['username']
+        return user["username"]
 
     @property
     def password(self):
         user = dbconfig.fetch_user(self.id)
         if user is None:
             raise ValueError("User not found")
-        return user['password']
+        return user["password"]
 
     async def __login(self):
         try:
