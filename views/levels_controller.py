@@ -1,7 +1,9 @@
 import discord
+
 from GDBOT.client import gd_client
 from GDBOT.src.Builders import Builder
 from GDBOT.src.Loader import Loader
+
 
 class Controller(discord.ui.View):
     def __init__(self, *, timeout=180, level_ids):

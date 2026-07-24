@@ -1,7 +1,9 @@
+import subprocess
 import tkinter as tk
 from tkinter import messagebox
+
 import customtkinter
-import subprocess
+
 
 def run() -> None:
     subprocess.run('run.bat')

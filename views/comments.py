@@ -1,5 +1,7 @@
 import discord
+
 from GDBOT.src.Builders import Builder
+
 
 class UserComments(discord.ui.View):
     def __init__(self, *, timeout=180, comments):

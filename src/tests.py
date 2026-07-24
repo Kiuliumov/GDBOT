@@ -1,7 +1,10 @@
 import unittest
-from unittest.mock import MagicMock, AsyncMock
+from unittest.mock import AsyncMock, MagicMock
+
 from discord import Interaction, Message
+
 from GDBOT.app import client as Bot
+
 
 class TestBot(unittest.IsolatedAsyncioTestCase):
 

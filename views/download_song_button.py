@@ -1,6 +1,8 @@
 import discord
+
 from GDBOT.client import gd_client
 from GDBOT.src.Utils import Utils
+
 
 class Download(discord.ui.View):
     def __init__(self, *, timeout=180, song_id):

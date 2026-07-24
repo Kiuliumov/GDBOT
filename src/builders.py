@@ -1,8 +1,10 @@
-from client import gd_client
 import discord
-from src.utils import Utils
-from src.image import Image
+
+from client import gd_client
 from src.emoji import Emoji
+from src.image import Image
+from src.utils import Utils
+
 
 class Builder:
     @staticmethod

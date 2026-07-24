@@ -1,5 +1,6 @@
-import gd
 import dbconfig
+import gd
+
 from GDBOT.client import gd_client
 
 

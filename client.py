@@ -2,8 +2,8 @@
 import discord
 import gd
 from discord.ext import commands
-from constants import PREFIX
 
+from constants import PREFIX
 
 intents = discord.Intents.default()
 intents.message_content = True
